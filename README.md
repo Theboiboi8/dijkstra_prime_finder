@@ -6,9 +6,7 @@ Download or clone this repo and run `cargo run`. Alternatively, run `cargo build
 fn main() {
     const COUNT : usize = 100_000; // Change for more/less prime-finding
 	
-	let instant = std::time::Instant::now();
-    println!("{:#?}", primes(COUNT));
-	println!("Took {}ms", instant.elapsed().as_millis());
+	// Output Code
 }
 
 fn primes(count : usize) -> Vec<usize> {
