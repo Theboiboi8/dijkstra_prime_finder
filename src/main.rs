@@ -1,29 +1,29 @@
 fn main() {
-    const COUNT : usize = 100_000;
-	
+    const SEARCH_RANGE: usize = 100;
+
 	let instant = std::time::Instant::now();
-    println!("{:#?}", primes(COUNT));
+    println!("{:?}", primes(SEARCH_RANGE));
 	println!("Took {}ms", instant.elapsed().as_millis());
 }
 
-fn primes(count : usize) -> Vec<usize> {
+fn primes(search_range: usize) -> Vec<usize> {
     let mut primes = Vec::new();
     let mut pool = Vec::<(usize, usize)>::new();
-	
-    'index: for index in 1..=count {
-	    
+
+    for index in 1..=search_range {
+
 	    let mut applicable_pool = Vec::<(usize, usize)>::new();
 
 	    if index == 1 {
-		    continue 'index
+		    continue
 	    }
 	    if pool.is_empty() {
 		    primes.push(index);
 		    pool.push((index, index.pow(2)));
-		    continue 'index
+		    continue
 	    }
 
-	    let smallest_multiple : usize = pool
+	    let smallest_multiple: usize = pool
 		    .iter()
 		    .map(|element| element.1)
 		    .min()
@@ -36,7 +36,7 @@ fn primes(count : usize) -> Vec<usize> {
 			    applicable_pool.push(*tuple);
 		    }
 	    }
-	    
+
 	    if index < smallest_multiple {
 		    primes.push(index);
 		    pool.push((index, index.pow(2)));
